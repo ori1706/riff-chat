@@ -1,6 +1,5 @@
 import { io, type Socket } from "socket.io-client";
-
-const API_BASE = import.meta.env.VITE_API_URL ?? "";
+import { API_BASE } from "./apiBase";
 
 export function createSocket(token: string): Socket {
   return io(API_BASE || window.location.origin, {

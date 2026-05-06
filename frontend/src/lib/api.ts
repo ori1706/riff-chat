@@ -1,6 +1,5 @@
 import type { Channel, ChatMessage, ConversationSummary, SearchHit, User } from "../types";
-
-const API_BASE = import.meta.env.VITE_API_URL ?? "";
+import { API_BASE } from "./apiBase";
 
 function token(): string | null {
   return localStorage.getItem("riff_token");
