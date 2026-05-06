@@ -2,21 +2,21 @@ import type { Channel, ChatMessage, ConversationSummary, SearchHit, User } from 
 import { API_BASE } from "./apiBase";
 
 function token(): string | null {
-  return localStorage.getItem("riff_token");
+  return localStorage.getItem("slackord_token");
 }
 
 export function setSession(tok: string, user: User) {
-  localStorage.setItem("riff_token", tok);
-  localStorage.setItem("riff_user", JSON.stringify(user));
+  localStorage.setItem("slackord_token", tok);
+  localStorage.setItem("slackord_user", JSON.stringify(user));
 }
 
 export function clearSession() {
-  localStorage.removeItem("riff_token");
-  localStorage.removeItem("riff_user");
+  localStorage.removeItem("slackord_token");
+  localStorage.removeItem("slackord_user");
 }
 
 export function loadStoredUser(): User | null {
-  const raw = localStorage.getItem("riff_user");
+  const raw = localStorage.getItem("slackord_user");
   if (!raw) return null;
   try {
     return JSON.parse(raw) as User;

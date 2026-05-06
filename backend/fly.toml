@@ -1,4 +1,4 @@
-app = "riff-chat-api"
+app = "slackord-api"
 primary_region = "iad"
 
 [build]

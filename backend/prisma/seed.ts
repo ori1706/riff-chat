@@ -11,42 +11,42 @@ const avatar = (seed: string) =>
 const usersData = [
   {
     name: "Alex Chen",
-    email: "alex.chen@riff.demo",
+    email: "alex.chen@slackord.demo",
     seed: "AlexChen",
     bio: "Staff engineer. Bikesheds in TypeScript threads.",
     role: "Staff Engineer",
   },
   {
     name: "Jordan Lee",
-    email: "jordan.lee@riff.demo",
+    email: "jordan.lee@slackord.demo",
     seed: "JordanLee",
     bio: "Design systems lead. Thinks in spacing tokens.",
     role: "Design Lead",
   },
   {
     name: "Sam Rivera",
-    email: "sam.rivera@riff.demo",
+    email: "sam.rivera@slackord.demo",
     seed: "SamRivera",
     bio: "Product. Translates customer pain into scoped MVPs.",
     role: "Product Manager",
   },
   {
     name: "Morgan Patel",
-    email: "morgan.patel@riff.demo",
+    email: "morgan.patel@slackord.demo",
     seed: "MorganPatel",
     bio: "Infra & security. Redis wrangler.",
     role: "Platform Engineer",
   },
   {
     name: "Riley Kim",
-    email: "riley.kim@riff.demo",
+    email: "riley.kim@slackord.demo",
     seed: "RileyKim",
     bio: "Mobile + realtime. WebSocket obsessive.",
     role: "Mobile Engineer",
   },
   {
     name: "Casey Nguyen",
-    email: "casey.nguyen@riff.demo",
+    email: "casey.nguyen@slackord.demo",
     seed: "CaseyNguyen",
     bio: "Marketing. Keeps launches coherent when everything is on fire.",
     role: "Marketing",
@@ -105,7 +105,7 @@ const channelSeeds: { slug: string; name: string; topic: string; lines: string[]
       "Snack channel energy leaking into general again 😅",
       "I'll update seed bios to sound less corporate.",
       "Security note: JWT in `localStorage` is **demo-only**.",
-      "Calling it: Riff feels more alive than our last Slack theme.",
+      "Calling it: SlackOrd feels more alive than our last Slack theme.",
       "Thanks everyone for keeping calls short today.",
       "I'll verify iframe height at 800px and 1200px tonight.",
       "Random: what's the best keyboard shortcut we've added? Mine is ⌘K.",
@@ -132,7 +132,7 @@ const channelSeeds: { slug: string; name: string; topic: string; lines: string[]
       "Paging virtuoso — working great with framer-motion fades.",
       "I'll post-deployment checklist in #engineering after merge.",
       "Wildcard Friday: share a playlist link? (Optional)",
-      "Signing off — great momentum on Riff this week.",
+      "Signing off — great momentum on SlackOrd this week.",
     ],
   },
   {
@@ -233,7 +233,7 @@ const channelSeeds: { slug: string; name: string; topic: string; lines: string[]
       "User quote: 'typing indicator feels human' — nice.",
       "File upload drag target — extend hit area to full dropzone?",
       "Typography scale: bump message body to 15px for readability.",
-      "Dark mode token rename: `--riff-surface-elevated` approved.",
+      "Dark mode token rename: `--slackord-surface-elevated` approved.",
       "Illustration for splash: abstract waveform vs chat bubbles?",
       "Poll: default emoji skin tone settings?",
       "Design QA: image lightbox focus trap verified.",
@@ -244,7 +244,7 @@ const channelSeeds: { slug: string; name: string; topic: string; lines: string[]
       "Exploration: mini avatar stack for overlapping typing users.",
       "Onboarding tooltip copy for mentions typeahead updated.",
       "Visual bug: reaction pill misaligned on Safari 17 — filed.",
-      "Moodboard for 'Riff' brand — electric teal + midnight slate.",
+      "Moodboard for 'SlackOrd' brand — electric teal + midnight slate.",
       "Considering softer borders on message bubbles in DMs.",
       "Design debt: unify hover states on sidebar rows.",
       "UX copy for optimistic send states: 'Sending…' vs 'In flight'",
@@ -369,8 +369,8 @@ const channelSeeds: { slug: string; name: string; topic: string; lines: string[]
       "I'll verify network tab: no socket reconnect storm.",
       "Story for recruiters: realtime collab without accounts — neat hook.",
       "Cross-link from #general if portfolio milestones land.",
-      "Consider lightweight 'What is Riff?' tooltip on splash.",
-      "Brand slug GitHub `riff-chat` — matches deploy artifacts.",
+      "Consider lightweight 'What is SlackOrd?' tooltip on splash.",
+      "Brand slug GitHub `slackord` — matches deploy artifacts.",
       "Document Supabase alternative path — env `DATABASE_URL` swap.",
       "I'll capture 800px vs 1200px iframe screenshots.",
       "QA: image lightbox closes on Esc within iframe.",
@@ -483,8 +483,8 @@ async function main() {
   }
 
   // Sample DM between Alex and Jordan
-  const alex = userByEmail["alex.chen@riff.demo"]!;
-  const jordan = userByEmail["jordan.lee@riff.demo"]!;
+  const alex = userByEmail["alex.chen@slackord.demo"]!;
+  const jordan = userByEmail["jordan.lee@slackord.demo"]!;
   const dm = await prisma.conversation.create({
     data: {
       members: {

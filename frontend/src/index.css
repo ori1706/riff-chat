@@ -2,16 +2,16 @@
 
 @theme {
   --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --color-riff-void: #070a12;
-  --color-riff-midnight: #0c1020;
-  --color-riff-slate: #12182c;
-  --color-riff-panel: #151c34;
-  --color-riff-border: #242d48;
-  --color-riff-muted: #8b93ad;
-  --color-riff-text: #e6e9f5;
-  --color-riff-teal: #3fe0c5;
-  --color-riff-teal-dim: #2aa790;
-  --color-riff-amber: #f6c177;
+  --color-slackord-void: #070a12;
+  --color-slackord-midnight: #0c1020;
+  --color-slackord-slate: #12182c;
+  --color-slackord-panel: #151c34;
+  --color-slackord-border: #242d48;
+  --color-slackord-muted: #8b93ad;
+  --color-slackord-text: #e6e9f5;
+  --color-slackord-teal: #3fe0c5;
+  --color-slackord-teal-dim: #2aa790;
+  --color-slackord-amber: #f6c177;
   --radius-lg: 14px;
 }
 
@@ -24,8 +24,8 @@ body,
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-riff-void);
-  color: var(--color-riff-text);
+  background: var(--color-slackord-void);
+  color: var(--color-slackord-text);
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

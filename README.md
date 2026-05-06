@@ -1,4 +1,4 @@
-# Riff — realtime team chat (portfolio)
+# SlackOrd — realtime team chat (portfolio)
 
 **Tagline:** Slack/Discord-inspired team chat with Socket.IO realtime, rich messages, threads, and iframe-first layout — built as **Project 4/5** for a career-page showcase.
 
@@ -37,7 +37,7 @@ After `npm run dev`, capture your own screenshot from `#general` for the README 
 
 ```bash
 docker compose up -d postgres
-# default: postgresql://riff:riff@localhost:5435/riff?schema=public
+# default: postgresql://slackord:slackord@localhost:5435/slackord?schema=public
 ```
 
 ### 2) Backend
@@ -86,7 +86,9 @@ docker compose up --build
 
 | Variable | Purpose |
 | -------- | ------- |
-| `VITE_API_URL` | Empty in dev (use Vite proxy). In production static hosting, set to your API origin (e.g. `https://api.example.com`). |
+| `VITE_API_URL` | Empty in dev (use Vite proxy). In production static hosting, set to your API origin (e.g. `https://slackord-api.onrender.com`). |
+
+The checked-in `frontend/.env.production` points at the current hosted API (`https://riff-chat-api.onrender.com`) until you rename or recreate the Render service as **`slackord-api`** (see `render.yaml`), then update this URL everywhere.
 
 ## Database (overview)
 
@@ -96,7 +98,7 @@ docker compose up --build
 ## Demo access
 
 - No password. Open the splash screen and pick any seeded teammate.
-- JWT is stored in `localStorage` under `riff_token` (documented for iframe demos).
+- JWT is stored in `localStorage` under `slackord_token` (documented for iframe demos).
 
 ## Features implemented
 
@@ -120,7 +122,7 @@ Parent page must **not** send `X-Frame-Options: DENY`. This app sets **`Content-
   width="100%"
   height="720"
   style="border:0;border-radius:16px"
-  title="Riff"
+  title="SlackOrd"
   allow="autoplay; clipboard-write"
   loading="lazy"
 ></iframe>
@@ -133,22 +135,24 @@ Serve `iframe-test.html` from the repo root to validate embed + **800px / 1200px
 ### GitHub
 
 ```bash
-gh repo create ori1706/riff-chat --public --source=. --push --description "Riff — realtime chat demo (Socket.IO, Prisma, iframe-ready)"
+git clone https://github.com/ori1706/slackord.git
+# …
+gh repo create ori1706/slackord --public --source=. --push --description "SlackOrd — realtime chat demo (Socket.IO, Prisma, iframe-ready)"
 ```
 
 ### Frontend → Vercel
+
+Use Vercel project **slackord** (root directory `frontend`, framework Vite). Set **`VITE_API_URL`** to your public API URL.
 
 ```bash
 cd frontend
 npx vercel --prod --yes
 ```
 
-If the CLI requires interactive login, use the Vercel dashboard: set **Root Directory** to `frontend`, framework Vite, and env `VITE_API_URL` to your public API URL.
-
 ### Backend → Fly.io / Render
 
-- **Fly:** from `backend/`, set secrets `DATABASE_URL`, `JWT_SECRET`, `PUBLIC_URL` (your Fly app URL), then `fly deploy`.
-- **Render:** use repo `render.yaml` as a blueprint; set `DATABASE_URL` and `PUBLIC_URL` in the dashboard.
+- **Fly:** from `backend/`, app name in `fly.toml` is **`slackord-api`**. Set secrets `DATABASE_URL`, `JWT_SECRET`, `PUBLIC_URL`, then `fly deploy`.
+- **Render:** blueprint `render.yaml` defines **`slackord-api`**. Set `DATABASE_URL` and `PUBLIC_URL` in the dashboard.
 
 **Supabase:** create a project, paste `DATABASE_URL` into backend env, run `npx prisma db push && npm run db:seed` once.
 

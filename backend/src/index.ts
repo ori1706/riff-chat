@@ -705,6 +705,6 @@ async function demoBotLoop() {
 }
 
 httpServer.listen(PORT, () => {
-  console.log(`Riff API + WS on ${PORT}`);
+  console.log(`SlackOrd API + WS on ${PORT}`);
   void demoBotLoop();
 });

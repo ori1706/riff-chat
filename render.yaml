@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: riff-chat-api
+    name: slackord-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend

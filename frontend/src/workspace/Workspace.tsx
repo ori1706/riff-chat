@@ -447,20 +447,20 @@ export function Workspace({
         : "Pick a channel";
 
   return (
-    <div id="app-shell" className="relative flex h-full min-h-0 w-full bg-riff-midnight text-riff-text">
-      <aside className="flex w-[280px] shrink-0 flex-col border-r border-riff-border bg-riff-slate/80 backdrop-blur">
+    <div id="app-shell" className="relative flex h-full min-h-0 w-full bg-slackord-midnight text-slackord-text">
+      <aside className="flex w-[280px] shrink-0 flex-col border-r border-slackord-border bg-slackord-slate/80 backdrop-blur">
         <div className="flex items-center gap-3 border-b border-white/5 px-4 py-4">
-          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-riff-teal to-indigo-500 text-sm font-black text-riff-void">
+          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-slackord-teal to-indigo-500 text-sm font-black text-slackord-void">
             R
           </div>
           <div className="min-w-0">
-            <div className="truncate text-sm font-semibold text-white">Riff</div>
-            <div className="truncate text-[11px] text-riff-muted">Realtime workspace demo</div>
+            <div className="truncate text-sm font-semibold text-white">SlackOrd</div>
+            <div className="truncate text-[11px] text-slackord-muted">Realtime workspace demo</div>
           </div>
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-2 py-3">
-          <div className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-wide text-riff-muted">Channels</div>
+          <div className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-wide text-slackord-muted">Channels</div>
           <div className="space-y-1">
             {(channels ?? []).map((c) => {
               const active = view?.kind === "channel" && view.channel.id === c.id;
@@ -471,17 +471,17 @@ export function Workspace({
                   onClick={() => setView({ kind: "channel", channel: c })}
                   className={clsx(
                     "flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm transition",
-                    active ? "bg-white/10 text-white" : "text-riff-muted hover:bg-white/5 hover:text-white"
+                    active ? "bg-white/10 text-white" : "text-slackord-muted hover:bg-white/5 hover:text-white"
                   )}
                 >
-                  <span className="text-riff-muted">#</span>
+                  <span className="text-slackord-muted">#</span>
                   <span className="truncate font-medium">{c.name}</span>
                 </button>
               );
             })}
           </div>
 
-          <div className="mt-4 px-2 pb-2 text-[11px] font-semibold uppercase tracking-wide text-riff-muted">
+          <div className="mt-4 px-2 pb-2 text-[11px] font-semibold uppercase tracking-wide text-slackord-muted">
             Direct messages
           </div>
           <div className="space-y-1">
@@ -505,7 +505,7 @@ export function Workspace({
                       peer: conv.peer,
                     });
                   }}
-                  className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm text-riff-muted transition hover:bg-white/5 hover:text-white"
+                  className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm text-slackord-muted transition hover:bg-white/5 hover:text-white"
                 >
                   <Avatar user={u} presence={presence} />
                   <span className="truncate">{u.name}</span>
@@ -519,12 +519,12 @@ export function Workspace({
             <Avatar user={user} presence={presence} />
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm font-semibold text-white">{user.name}</div>
-              <div className="truncate text-[11px] text-riff-muted">{user.role}</div>
+              <div className="truncate text-[11px] text-slackord-muted">{user.role}</div>
             </div>
             <button
               type="button"
               onClick={onLogout}
-              className="rounded-lg border border-white/10 px-2 py-1 text-[11px] text-riff-muted hover:text-white"
+              className="rounded-lg border border-white/10 px-2 py-1 text-[11px] text-slackord-muted hover:text-white"
             >
               Leave
             </button>
@@ -533,10 +533,10 @@ export function Workspace({
       </aside>
 
       <main className="relative flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between gap-4 border-b border-white/5 bg-riff-panel/40 px-6 py-4 backdrop-blur">
+        <header className="flex items-center justify-between gap-4 border-b border-white/5 bg-slackord-panel/40 px-6 py-4 backdrop-blur">
           <div className="min-w-0">
             <div className="truncate text-lg font-semibold text-white">{headerTitle}</div>
-            <div className="truncate text-xs text-riff-muted">{headerSub}</div>
+            <div className="truncate text-xs text-slackord-muted">{headerSub}</div>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -546,11 +546,11 @@ export function Workspace({
                 setSearchQ("");
                 setSearchResults(null);
               }}
-              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-riff-muted hover:text-white"
+              className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slackord-muted hover:text-white"
             >
               Search
             </button>
-            <div className="hidden items-center gap-1 rounded-xl border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-riff-muted sm:flex">
+            <div className="hidden items-center gap-1 rounded-xl border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-slackord-muted sm:flex">
               <span className="rounded border border-white/10 bg-black/30 px-1">⌘</span>
               <span className="rounded border border-white/10 bg-black/30 px-1">K</span>
             </div>
@@ -558,15 +558,15 @@ export function Workspace({
         </header>
 
         {typingNames.length ? (
-          <div className="border-b border-white/5 px-6 py-2 text-xs text-riff-muted">
+          <div className="border-b border-white/5 px-6 py-2 text-xs text-slackord-muted">
             {typingNames.slice(0, 3).join(", ")} {typingNames.length === 1 ? "is" : "are"} typing…
           </div>
         ) : null}
 
         <div className="relative min-h-0 flex-1">
           {loadingThread ? (
-            <div className="absolute inset-0 z-10 grid place-items-center bg-riff-midnight/40 backdrop-blur-sm">
-              <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-riff-teal" />
+            <div className="absolute inset-0 z-10 grid place-items-center bg-slackord-midnight/40 backdrop-blur-sm">
+              <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-slackord-teal" />
             </div>
           ) : null}
 
@@ -584,7 +584,7 @@ export function Workspace({
               if (row.t === "day") {
                 return (
                   <div className="flex justify-center py-3">
-                    <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-riff-muted">
+                    <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-slackord-muted">
                       {row.label}
                     </div>
                   </div>
@@ -617,7 +617,7 @@ export function Workspace({
           {!atBottom && newWhileScrolled > 0 ? (
             <button
               type="button"
-              className="absolute bottom-20 left-1/2 z-20 -translate-x-1/2 rounded-full border border-white/10 bg-riff-panel px-4 py-2 text-xs font-semibold text-white shadow-lg"
+              className="absolute bottom-20 left-1/2 z-20 -translate-x-1/2 rounded-full border border-white/10 bg-slackord-panel px-4 py-2 text-xs font-semibold text-white shadow-lg"
               onClick={() => {
                 virtuosoRef.current?.scrollToIndex({ index: "LAST", align: "end" });
                 setNewWhileScrolled(0);
@@ -647,7 +647,7 @@ export function Workspace({
         />
 
         {mentionOpen && filteredMentions.length ? (
-          <div className="absolute bottom-24 left-6 z-30 w-64 overflow-hidden rounded-2xl border border-white/10 bg-riff-panel shadow-xl">
+          <div className="absolute bottom-24 left-6 z-30 w-64 overflow-hidden rounded-2xl border border-white/10 bg-slackord-panel shadow-xl">
             {filteredMentions.map((u) => (
               <button
                 key={u.id}
@@ -671,20 +671,20 @@ export function Workspace({
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 40, opacity: 0 }}
             transition={{ type: "spring", stiffness: 320, damping: 30 }}
-            className="flex w-[380px] shrink-0 flex-col border-l border-riff-border bg-riff-panel/70 backdrop-blur"
+            className="flex w-[380px] shrink-0 flex-col border-l border-slackord-border bg-slackord-panel/70 backdrop-blur"
           >
             <div className="flex items-center justify-between border-b border-white/5 px-4 py-3">
               <div className="text-sm font-semibold text-white">Thread</div>
               <button
                 type="button"
-                className="rounded-lg border border-white/10 px-2 py-1 text-[11px] text-riff-muted hover:text-white"
+                className="rounded-lg border border-white/10 px-2 py-1 text-[11px] text-slackord-muted hover:text-white"
                 onClick={() => setThreadOpen(null)}
               >
                 Close
               </button>
             </div>
             <div className="max-h-[35vh] overflow-y-auto border-b border-white/5 px-4 py-3 text-sm">
-              <div className="mb-2 text-xs font-semibold text-riff-muted">Original</div>
+              <div className="mb-2 text-xs font-semibold text-slackord-muted">Original</div>
               <div className="text-sm text-white/90">{threadOpen.body}</div>
             </div>
             <div className="min-h-0 flex-1 overflow-y-auto px-2 py-2">
@@ -714,13 +714,13 @@ export function Workspace({
 
       {switcherOpen ? (
         <div className="absolute inset-0 z-50 flex items-start justify-center bg-black/50 px-4 pt-24">
-          <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-riff-panel p-3 shadow-2xl">
+          <div className="w-full max-w-xl rounded-2xl border border-white/10 bg-slackord-panel p-3 shadow-2xl">
             <input
               autoFocus
               value={switcherQ}
               onChange={(e) => setSwitcherQ(e.target.value)}
               placeholder="Jump to channel or DM…"
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-riff-teal/40"
+              className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-slackord-teal/40"
             />
             <div className="mt-2 max-h-72 overflow-y-auto text-sm">
               {switcherItems.ch.map((c) => (
@@ -733,7 +733,7 @@ export function Workspace({
                     setSwitcherOpen(false);
                   }}
                 >
-                  <span className="text-riff-muted">#</span>
+                  <span className="text-slackord-muted">#</span>
                   <span>{c.name}</span>
                 </button>
               ))}
@@ -759,7 +759,7 @@ export function Workspace({
                     setSwitcherOpen(false);
                   }}
                 >
-                  <span className="text-riff-muted">@</span>
+                  <span className="text-slackord-muted">@</span>
                   <span>{d.title}</span>
                 </button>
               ))}
@@ -770,7 +770,7 @@ export function Workspace({
 
       {searchOpen ? (
         <div className="absolute inset-0 z-50 flex items-start justify-center bg-black/50 px-4 pt-20">
-          <div className="w-full max-w-2xl rounded-2xl border border-white/10 bg-riff-panel p-4 shadow-2xl">
+          <div className="w-full max-w-2xl rounded-2xl border border-white/10 bg-slackord-panel p-4 shadow-2xl">
             <div className="flex gap-2">
               <input
                 value={searchQ}
@@ -779,11 +779,11 @@ export function Workspace({
                   if (e.key === "Enter") void runSearch();
                 }}
                 placeholder="Search messages (min 2 chars)…"
-                className="flex-1 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-riff-teal/40"
+                className="flex-1 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-slackord-teal/40"
               />
               <button
                 type="button"
-                className="rounded-xl bg-riff-teal px-4 py-2 text-sm font-semibold text-riff-void"
+                className="rounded-xl bg-slackord-teal px-4 py-2 text-sm font-semibold text-slackord-void"
                 onClick={() => void runSearch()}
               >
                 Go
@@ -808,7 +808,7 @@ export function Workspace({
                     setSearchOpen(false);
                   }}
                 >
-                  <div className="text-xs text-riff-muted">{hit.channelName ? `#${hit.channelName}` : "DM"}</div>
+                  <div className="text-xs text-slackord-muted">{hit.channelName ? `#${hit.channelName}` : "DM"}</div>
                   <div className="mt-1 line-clamp-2 text-white/90">{hit.body}</div>
                 </button>
               ))}
@@ -867,8 +867,8 @@ function Avatar({
       <img src={user.avatarUrl} alt="" className={clsx(dim, "rounded-xl border border-white/10 bg-black/20")} />
       <span
         className={clsx(
-          "absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-riff-panel",
-          online ? "bg-emerald-400" : user.status === "AWAY" ? "bg-riff-amber" : "bg-riff-muted"
+          "absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-slackord-panel",
+          online ? "bg-emerald-400" : user.status === "AWAY" ? "bg-slackord-amber" : "bg-slackord-muted"
         )}
       />
     </span>
@@ -910,11 +910,11 @@ function MessageRow({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-2">
             <span className="text-sm font-semibold text-white">{m.user.name}</span>
-            <span className="text-[11px] text-riff-muted">
+            <span className="text-[11px] text-slackord-muted">
               {new Date(m.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </span>
-            {m.editedAt ? <span className="text-[11px] text-riff-muted">(edited)</span> : null}
-            {m.localStatus === "sending" ? <span className="text-[11px] text-riff-amber">Sending…</span> : null}
+            {m.editedAt ? <span className="text-[11px] text-slackord-muted">(edited)</span> : null}
+            {m.localStatus === "sending" ? <span className="text-[11px] text-slackord-amber">Sending…</span> : null}
             {m.localStatus === "sent" ? <span className="text-[11px] text-emerald-300">✓</span> : null}
           </div>
 
@@ -928,7 +928,7 @@ function MessageRow({
               <div className="flex gap-2">
                 <button
                   type="button"
-                  className="rounded-lg bg-riff-teal px-3 py-1 text-xs font-semibold text-riff-void"
+                  className="rounded-lg bg-slackord-teal px-3 py-1 text-xs font-semibold text-slackord-void"
                   onClick={() => {
                     void onEdit(draft).then(() => setEditing(false));
                   }}
@@ -969,7 +969,7 @@ function MessageRow({
                     onClick={() => void onReact(emoji)}
                     className={clsx(
                       "rounded-full border px-2 py-0.5 text-[12px]",
-                      active ? "border-riff-teal/50 bg-riff-teal/10" : "border-white/10 bg-white/5"
+                      active ? "border-slackord-teal/50 bg-slackord-teal/10" : "border-white/10 bg-white/5"
                     )}
                   >
                     {emoji} {agg?.count ?? 0}
@@ -977,7 +977,7 @@ function MessageRow({
                 );
               })}
               {!m.parentId ? (
-                <button type="button" className="text-[11px] text-riff-muted hover:text-white" onClick={onOpenThread}>
+                <button type="button" className="text-[11px] text-slackord-muted hover:text-white" onClick={onOpenThread}>
                   Thread{m.replyCount ? ` · ${m.replyCount}` : ""}
                 </button>
               ) : null}
@@ -986,7 +986,7 @@ function MessageRow({
                   {canEdit ? (
                     <button
                       type="button"
-                      className="text-[11px] text-riff-muted hover:text-white"
+                      className="text-[11px] text-slackord-muted hover:text-white"
                       onClick={() => setEditing(true)}
                     >
                       Edit
@@ -1028,7 +1028,7 @@ function Composer({
 }) {
   const fileRef = useRef<HTMLInputElement | null>(null);
   return (
-    <div className="border-t border-white/5 bg-riff-panel/45 p-4 backdrop-blur">
+    <div className="border-t border-white/5 bg-slackord-panel/45 p-4 backdrop-blur">
       <div className="flex items-end gap-2">
         <button
           type="button"
@@ -1068,18 +1068,18 @@ function Composer({
           }}
           placeholder={disabled ? "" : "Message… (Enter to send, Shift+Enter newline)"}
           rows={3}
-          className="min-h-[84px] flex-1 resize-none rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-riff-teal/40"
+          className="min-h-[84px] flex-1 resize-none rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-slackord-teal/40"
         />
         <button
           type="button"
           disabled={disabled}
           onClick={onSend}
-          className="rounded-2xl bg-riff-teal px-4 py-3 text-sm font-semibold text-riff-void disabled:opacity-40"
+          className="rounded-2xl bg-slackord-teal px-4 py-3 text-sm font-semibold text-slackord-void disabled:opacity-40"
         >
           Send
         </button>
       </div>
-      <div className="mt-2 text-[11px] text-riff-muted">Markdown supported · @mentions highlight for teammates</div>
+      <div className="mt-2 text-[11px] text-slackord-muted">Markdown supported · @mentions highlight for teammates</div>
     </div>
   );
 }

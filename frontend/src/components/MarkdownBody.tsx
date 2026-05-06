@@ -27,7 +27,7 @@ export function MarkdownBody({ text, users }: { text: string; users: User[] }) {
         a({ href, children }) {
           if (href?.startsWith("mention:")) {
             return (
-              <span className="rounded bg-riff-teal/15 px-1 font-semibold text-riff-teal">
+              <span className="rounded bg-slackord-teal/15 px-1 font-semibold text-slackord-teal">
                 @{decodeURIComponent(href.slice("mention:".length))}
               </span>
             );
@@ -35,7 +35,7 @@ export function MarkdownBody({ text, users }: { text: string; users: User[] }) {
           return (
             <a
               href={href}
-              className="text-riff-teal underline decoration-riff-teal/40 underline-offset-2"
+              className="text-slackord-teal underline decoration-slackord-teal/40 underline-offset-2"
               target="_blank"
               rel="noreferrer"
             >
@@ -48,7 +48,7 @@ export function MarkdownBody({ text, users }: { text: string; users: User[] }) {
           if (inline || !match) {
             return (
               <code
-                className="rounded bg-riff-border/80 px-1.5 py-0.5 font-mono text-[0.9em] text-riff-text"
+                className="rounded bg-slackord-border/80 px-1.5 py-0.5 font-mono text-[0.9em] text-slackord-text"
                 {...rest}
               >
                 {children}
@@ -84,7 +84,7 @@ export function MarkdownBody({ text, users }: { text: string; users: User[] }) {
           return <strong className="font-semibold text-white">{children}</strong>;
         },
         em({ children }) {
-          return <em className="italic text-riff-muted">{children}</em>;
+          return <em className="italic text-slackord-muted">{children}</em>;
         },
       }}
     >

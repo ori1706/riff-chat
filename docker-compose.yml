@@ -2,15 +2,15 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: riff
-      POSTGRES_PASSWORD: riff
-      POSTGRES_DB: riff
+      POSTGRES_USER: slackord
+      POSTGRES_PASSWORD: slackord
+      POSTGRES_DB: slackord
     ports:
       - "5435:5432"
     volumes:
-      - riff_pg:/var/lib/postgresql/data
+      - slackord_pg:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U riff -d riff"]
+      test: ["CMD-SHELL", "pg_isready -U slackord -d slackord"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -22,7 +22,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      DATABASE_URL: postgresql://riff:riff@postgres:5432/riff?schema=public
+      DATABASE_URL: postgresql://slackord:slackord@postgres:5432/slackord?schema=public
       JWT_SECRET: dev-docker-secret
       PORT: "4000"
       PUBLIC_URL: http://localhost:4000
@@ -41,4 +41,4 @@ services:
       - backend
 
 volumes:
-  riff_pg:
+  slackord_pg:
