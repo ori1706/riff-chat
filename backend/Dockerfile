@@ -11,4 +11,5 @@ ENV NODE_ENV=production
 ENV PORT=4000
 EXPOSE 4000
 
-CMD ["sh", "-c", "npx prisma db push --accept-data-loss && npx tsx prisma/seed.ts && node dist/index.js"]
+# Schema sync without destructive resets; seed is applied separately via `npm run db:seed` in CI/migrations.
+CMD ["sh", "-c", "npx prisma db push && node dist/index.js"]
