@@ -142,12 +142,19 @@ gh repo create ori1706/slackord --public --source=. --push --description "SlackO
 
 ### Frontend → Vercel
 
-Use Vercel project **slackord** (root directory `frontend`, framework Vite). Set **`VITE_API_URL`** to your public API URL.
+**Production:** https://frontend-henna-one-70.vercel.app — Vercel project **`slackord`** (`frontend/` must stay linked to this project only).
+
+Build env (**Production**): `VITE_API_URL=https://riff-chat-api.onrender.com` (no trailing slash).
 
 ```bash
 cd frontend
+vercel login                                   # once
+vercel link --yes --project slackord           # do not reuse Wavefront’s link — wrong app will ship to this URL
+vercel env add VITE_API_URL production --value "https://riff-chat-api.onrender.com" --yes --no-sensitive
 npx vercel --prod --yes
 ```
+
+If the CLI requires interactive login, use the Vercel dashboard: set **Root Directory** to `frontend`, framework Vite, and env **`VITE_API_URL`** as above (must **not** point at the Wavefront Render API).
 
 ### Backend → Fly.io / Render
 
