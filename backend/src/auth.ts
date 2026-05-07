@@ -5,7 +5,7 @@ const JWT_SECRET = process.env.JWT_SECRET ?? "dev-secret-change-me";
 
 export type JwtPayload = { sub: string; email: string };
 
-/** Demo auth: JWT in Authorization header. localStorage on client is iframe-friendly vs cookies. */
+/** Demo auth: JWT in Authorization header; client stores token in localStorage instead of cookies. */
 export function signToken(userId: string, email: string): string {
   return jwt.sign({ sub: userId, email }, JWT_SECRET, { expiresIn: "7d" });
 }

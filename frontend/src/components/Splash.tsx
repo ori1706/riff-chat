@@ -36,10 +36,10 @@ export function Splash({ onSignedIn }: { onSignedIn: (token: string, user: User)
               <span className="h-2 w-2 animate-pulse rounded-full bg-slackord-teal" />
               Portfolio demo workspace
             </div>
-            <h1 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Welcome to SlackOrd</h1>
+            <h1 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">Welcome to Slackord</h1>
             <p className="mt-2 max-w-60 text-sm text-slackord-muted">
-              Realtime channels, DMs, presence, typing, threads, reactions — optimized for iframe embeds. Pick a
-              demo identity to enter (JWT in `localStorage` as `slackord_token`, iframe-friendly).
+              Realtime channels, DMs, presence, typing, threads, reactions. Pick a demo identity to enter — JWT stays
+              in `localStorage` as `slackord_token` so the sandbox does not rely on cookie auth.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-slackord-muted">

@@ -1,6 +1,6 @@
-# SlackOrd — realtime team chat (portfolio)
+# Slackord — realtime team chat (portfolio)
 
-**Tagline:** Slack/Discord-inspired team chat with Socket.IO realtime, rich messages, threads, and iframe-first layout — built as **Project 4/5** for a career-page showcase.
+**Tagline:** Slack/Discord-inspired team chat with Socket.IO realtime, rich messages, threads — built as **Project 4/5** for a career-page showcase.
 
 After `npm run dev`, capture your own screenshot from `#general` for the README hero if desired.
 
@@ -14,7 +14,7 @@ After `npm run dev`, capture your own screenshot from `#general` for the README 
          │                                     │
          │ embed                               │
          ▼                                     ▼
-   Parent career page (iframe)           PostgreSQL
+   Parent résumé / portfolio page      PostgreSQL
 ```
 
 ## Tech stack
@@ -24,7 +24,7 @@ After `npm run dev`, capture your own screenshot from `#general` for the README 
 | Frontend | React 19, Vite 8, TypeScript, Tailwind v4, framer-motion, react-virtuoso, react-markdown, react-syntax-highlighter, emoji-mart |
 | Backend  | Node 22, Express, Socket.IO, Prisma, Zod, multer |
 | Database | PostgreSQL (Supabase or Docker local) |
-| Auth     | Demo identity picker → **JWT in `localStorage`** (iframe-friendly vs third-party cookies) |
+| Auth     | Demo identity picker → **JWT in `localStorage`** (avoids brittle third-party cookies in nested views) |
 
 ## Local setup
 
@@ -88,9 +88,7 @@ docker compose up --build
 | -------- | ------- |
 | `VITE_API_URL` | Empty in dev (use Vite proxy). In production static hosting, set to your API origin (e.g. `https://slackord-api.onrender.com`). |
 
-The checked-in `frontend/.env.production` points at the current hosted API (`https://riff-chat-api.onrender.com`) until you rename or recreate the Render service as **`slackord-api`** (see `render.yaml`), then update this URL everywhere.
-
-## Database (overview)
+The checked-in `frontend/.env.production` uses **`https://slackord-api.onrender.com`**. If your hosted API still uses an older slug (e.g. from before renaming the Render/Fly service), override `VITE_API_URL` in Vercel or local `.env.production`.
 
 - `User`, `Channel`, `ChannelMember`, `Conversation`, `ConversationMember`
 - `Message` (optional `parentId` for threads), `Reaction`, `Attachment` (nullable `messageId` until linked after upload)
@@ -98,7 +96,7 @@ The checked-in `frontend/.env.production` points at the current hosted API (`htt
 ## Demo access
 
 - No password. Open the splash screen and pick any seeded teammate.
-- JWT is stored in `localStorage` under `slackord_token` (documented for iframe demos).
+- JWT is stored in `localStorage` under `slackord_token` (documented for demo hosting).
 
 ## Features implemented
 
@@ -112,7 +110,7 @@ The checked-in `frontend/.env.production` points at the current hosted API (`htt
 - Seed data: 6 users, rich channel history, sample DM + thread
 - **DEMO_LIVE** optional bot traffic
 
-## Iframe embed
+## Embed snippet
 
 Parent page must **not** send `X-Frame-Options: DENY`. This app sets **`Content-Security-Policy: frame-ancestors *`** on API and nginx (Docker).
 
@@ -122,35 +120,33 @@ Parent page must **not** send `X-Frame-Options: DENY`. This app sets **`Content-
   width="100%"
   height="720"
   style="border:0;border-radius:16px"
-  title="SlackOrd"
+  title="Slackord"
   allow="autoplay; clipboard-write"
   loading="lazy"
 ></iframe>
 ```
 
-Serve `iframe-test.html` from the repo root to validate embed + **800px / 1200px** widths (update the `src` port if Vite picks another port).
+Serve `iframe-test.html` from the repo root to validate layout at **800px / 1200px** widths (update the `src` port if Vite picks another port).
 
 ## Deployment
 
 ### GitHub
 
 ```bash
-git clone https://github.com/ori1706/slackord.git
-# …
-gh repo create ori1706/slackord --public --source=. --push --description "SlackOrd — realtime chat demo (Socket.IO, Prisma, iframe-ready)"
+gh repo create ori1706/slackord --public --source=. --push --description "Slackord — realtime chat demo (Socket.IO, Prisma)"
 ```
 
 ### Frontend → Vercel
 
 **Production:** https://frontend-henna-one-70.vercel.app — Vercel project **`slackord`** (`frontend/` must stay linked to this project only).
 
-Build env (**Production**): `VITE_API_URL=https://riff-chat-api.onrender.com` (no trailing slash).
+Build env (**Production**): `VITE_API_URL=https://slackord-api.onrender.com` (no trailing slash).
 
 ```bash
 cd frontend
 vercel login                                   # once
 vercel link --yes --project slackord           # do not reuse Wavefront’s link — wrong app will ship to this URL
-vercel env add VITE_API_URL production --value "https://riff-chat-api.onrender.com" --yes --no-sensitive
+vercel env add VITE_API_URL production --value "https://slackord-api.onrender.com" --yes --no-sensitive
 npx vercel --prod --yes
 ```
 
@@ -158,8 +154,8 @@ If the CLI requires interactive login, use the Vercel dashboard: set **Root Dire
 
 ### Backend → Fly.io / Render
 
-- **Fly:** from `backend/`, app name in `fly.toml` is **`slackord-api`**. Set secrets `DATABASE_URL`, `JWT_SECRET`, `PUBLIC_URL`, then `fly deploy`.
-- **Render:** blueprint `render.yaml` defines **`slackord-api`**. Set `DATABASE_URL` and `PUBLIC_URL` in the dashboard.
+- **Fly:** from `backend/`, set secrets `DATABASE_URL`, `JWT_SECRET`, `PUBLIC_URL` (your Fly app URL), then `fly deploy`.
+- **Render:** use repo `render.yaml` as a blueprint; set `DATABASE_URL` and `PUBLIC_URL` in the dashboard.
 
 **Supabase:** create a project, paste `DATABASE_URL` into backend env, run `npx prisma db push && npm run db:seed` once.
 
@@ -170,7 +166,7 @@ If the CLI requires interactive login, use the Vercel dashboard: set **Root Dire
 3. Send message → optimistic → confirmed; console clean.
 4. Two browser tabs as two demo users → cross-send, typing, presence, reactions, edits.
 5. DM flow, thread panel, search hits, image upload + reload.
-6. Open `iframe-test.html` → app loads in iframe, WS works, layout uses **% height** (no `100vh` in app shell).
+6. Open `iframe-test.html` → app loads nested, WS works, layout uses **% height** (no `100vh` in app shell).
 
 ## License
 

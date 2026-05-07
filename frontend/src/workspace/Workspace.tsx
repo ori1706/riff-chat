@@ -454,7 +454,7 @@ export function Workspace({
             R
           </div>
           <div className="min-w-0">
-            <div className="truncate text-sm font-semibold text-white">SlackOrd</div>
+            <div className="truncate text-sm font-semibold text-white">Slackord</div>
             <div className="truncate text-[11px] text-slackord-muted">Realtime workspace demo</div>
           </div>
         </div>
